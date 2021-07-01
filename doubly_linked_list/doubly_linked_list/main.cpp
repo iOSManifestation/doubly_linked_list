@@ -20,13 +20,8 @@ using namespace std;
 // Doubly linked list creation
 /*struct Node {
     int data;
-    Node *next;
-    Node *prev;
-    Node(int d) {
-        data = d;
-        prev = NULL;
-        next = NULL;
-    }
+    Node *next, *prev;
+    Node(int d) : data(d), prev(nullptr), next(nullptr) {}
 };
 
 
@@ -64,14 +59,8 @@ int main() {
 // Doubly linked list insert a node at begining
 /*struct Node {
     int data;
-    Node *next;
-    Node *prev;
-    
-    Node(int d) {
-        data = d;
-        next = NULL;
-        prev = NULL;
-    }
+    Node *next, *prev;
+    Node(int d) : data(d), prev(nullptr), next(nullptr) {}
 };
 
 // Write a function to insert a node at begining
@@ -117,12 +106,8 @@ int main() {
 // Insert at end of doubly linked list
 /*struct Node {
     int data;
-    Node *next;
-    Node *prev;
-    Node(int d) {
-        data = d;
-        next = prev = NULL;
-    }
+    Node *next, *prev;
+    Node(int d) : data(d), prev(nullptr), next(nullptr) {}
 };
 
 
@@ -130,11 +115,11 @@ int main() {
 
 Node* insertEndDoubly(Node *head, int data) {
     Node *temp = new Node(data);
-    if (head == NULL) {
+    if (head == nullptr) {
         return temp;
     }
     Node *curr = head;
-    while (curr -> next != NULL) {
+    while (curr -> next != nullptr) {
         curr = curr -> next;
     }
     curr -> next = temp;
@@ -152,7 +137,7 @@ int main() {
 //    temp1 -> next = temp2;
 //    temp2 -> prev = temp1;
     // or
-    Node *head = NULL;
+    Node *head = nullptr;
     head = insertEndDoubly(head, 10);
     head = insertEndDoubly(head, 20);
     return 0;
@@ -181,23 +166,18 @@ int main() {
 // Reverse a doubly linked list
 /*struct Node {
     int data;
-    Node *prev;
-    Node *next;
-    Node(int data) {
-        this -> data = data;
-        prev = NULL;
-        next = NULL;
-    }
+    Node *next, *prev;
+    Node(int d) : data(d), prev(nullptr), next(nullptr) {}
 };
 
 // Write a function which reverse a doubly linked list
 Node* reverseDoubly(Node *head) {
-    if (head == NULL || head -> next == NULL) {
+    if (head == nullptr || head -> next == nullptr) {
         return head;
     }
-    Node *prev = NULL;
+    Node *prev = nullptr;
     Node *curr = head;
-    while (curr != NULL) {
+    while (curr != nullptr) {
         prev = curr -> prev;
         curr -> prev = curr -> next;
         curr -> next = prev;
@@ -241,26 +221,21 @@ int main() {
 // delete head node of a doubly linked list
 /*struct Node {
     int data;
-    Node *prev;
-    Node *next;
-    Node(int data) {
-        this -> data = data;
-        prev = NULL;
-        next = NULL;
-    }
+    Node *next, *prev;
+    Node(int d) : data(d), prev(nullptr), next(nullptr) {}
 };
 
 
 // delete head node of a doubly linked list
 Node* deleteHeadDoubly(Node *head) {
     // if doubly linked list is empty
-    if (head == NULL) {
-        return NULL;
+    if (head == nullptr) {
+        return nullptr;
     }
     // if only one node exist
-    if (head -> next == NULL) {
+    if (head -> next == nullptr) {
         delete head;
-        return NULL;
+        return nullptr;
     }
     // if more node exist
     else {
@@ -268,7 +243,7 @@ Node* deleteHeadDoubly(Node *head) {
         Node *temp = head;
         // second node making head
         head = head -> next;
-        // now your second node is head assign null to it's previous
+        // now your second node is head assign nullptr to it's previous
         head -> prev = NULL;
         // delete memory of your deleted node
         delete temp;
@@ -314,31 +289,27 @@ int main() {
 // Delete last node of a doubly linked list
 /*struct Node {
     int data;
-    Node *prev;
-    Node *next;
-    Node(int data) {
-        this -> data = data;
-        prev = NULL;
-        next = NULL;
-    }
+    Node *next, *prev;
+    Node(int d) : data(d), prev(nullptr), next(nullptr) {}
 };
+
 
 // function which deletes last node of doubly linked list
 Node* deleteLastNodeDoubly(Node *head) {
-    if (head == NULL) {
-        return NULL;
+    if (head == nullptr) {
+        return nullptr;
     }
-    if (head -> next == NULL) {
+    if (head -> next == nullptr) {
         delete head;
-        return NULL;
+        return nullptr;
     }
     Node *curr = head;
     // traverse the linked list and curr will stop which node we want delete
-    while (curr -> next != NULL) {
+    while (curr -> next != nullptr) {
         curr = curr -> next;
     }
-    // the node which we want to delete set it's previous element next to null
-    curr -> prev -> next = NULL;// simply this code means(curr -> prev) one node back and that particular node next set to null means making it last node
+    // the node which we want to delete set it's previous element next to nullptr
+    curr -> prev -> next = nullptr;// simply this code means(curr -> prev) one node back and that particular node next set to nullptr means making it last node
     delete curr;
     return head;
 }
